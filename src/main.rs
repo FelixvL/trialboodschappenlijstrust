@@ -39,11 +39,18 @@ struct BoodschappenLijst {
             format!("{verb} {}", self.name).into()
         }
     ),
+    onzeFunctie: qt_method!(
+        fn onzeFunctie(&self, productNaam: String){
+            println!("{}", productNaam);
+            println!("{productNaam}");
+        }
+    )
 }
 #[derive(QObject, Default)]
 struct Boodschap{
+    base: qt_base_class!(trait QObject),
+    productNaam: String,
     prijs: u32,
-    s: qt_base_class!(trait QObject),
 }
 impl Boodschap{
 

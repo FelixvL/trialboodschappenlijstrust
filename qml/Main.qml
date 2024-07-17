@@ -56,7 +56,17 @@ ApplicationWindow {
             Item {
                 Layout.fillHeight: true
             }
+            Button{
+                text: i18n.tr('Voeg Boodschap Toe')
+                onClicked:{
+                    greeter.onzeFunctie(onsTekstVeld.text);
+                }
 
+            }
+            TextField{
+                id: onsTekstVeld
+
+            }
             Label {
                 id: label
                 text: i18n.tr('Press the button below!')
