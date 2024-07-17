@@ -1,0 +1,15 @@
+[package]
+name = "rtb"
+version = "1.0.0"
+authors = ["esaf <e@s.af>"]
+edition = "2021"
+build = "src/build.rs"
+
+[dependencies]
+qmetaobject = "0.2.9"
+gettext-rs = "0.7"
+cstr = "0.2.11"
+cpp = "0.5"
+
+[build-dependencies]
+cpp_build = "0.5"

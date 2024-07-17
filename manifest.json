@@ -1,0 +1,15 @@
+{
+    "name": "rtb.esaf",
+    "description": "rtb",
+    "architecture": "@CLICK_ARCH@",
+    "title": "TrialRustBoodschappenLijst",
+    "hooks": {
+        "rtb": {
+            "apparmor": "rtb.apparmor",
+            "desktop":  "rtb.desktop"
+        }
+    },
+    "version": "1.0.0",
+    "maintainer": "esaf <e@s.af>",
+    "framework" : "@CLICK_FRAMEWORK@"
+}
