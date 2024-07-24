@@ -55,7 +55,15 @@ struct BoodschappenLijst {
             //ed:ExtraDing::new();
             //let a:MyPoint = MyPoint();
             // println!("{}", a.0);
-            // println!("{}", a.1);
+            //println!("{}", a.1);
+            let point:MyPoint= MyPoint {
+                a: 1,
+                b: 1,
+            } ;
+            
+            println!("{}", point.a);
+            println!("{}", point.b);
+            
             
 
         }
@@ -66,6 +74,11 @@ struct BoodschappenLijst {
 struct MyPoint{
     pub a:u32,
     pub b:u32,
+
+    // fn new(c:u32, d:u32)->Self{
+    //     a = c;
+    //     b = d;
+    // }
 }
 
 //impl QMetaType for MyPoint {};
