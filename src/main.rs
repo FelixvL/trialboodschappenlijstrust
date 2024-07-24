@@ -26,7 +26,11 @@ use std::path::PathBuf;
 use gettextrs::{bindtextdomain, textdomain};
 use qmetaobject::*;
 
+//use std::collections::LinkedList;
+//use std::cell::RefCell;
 mod qrc;
+
+use qmetaobject::QMetaType;
 
 #[derive(QObject, Default)]
 struct BoodschappenLijst {
@@ -34,6 +38,10 @@ struct BoodschappenLijst {
     name: qt_property!(QString; NOTIFY name_changed),
     name_changed: qt_signal!(),
     boodschap: Boodschap,
+    nummer: u32,
+//    list: LinkedList<u32> = LinkedList::new(), 
+    //list: qt_property!(Vec<i32>; CONST),
+    //QVector<int> integerVector;
     compute_greetings: qt_method!(
         fn compute_greetings(&self, verb: String) -> QString {
             format!("{verb} {}", self.name).into()
@@ -43,9 +51,51 @@ struct BoodschappenLijst {
         fn onzeFunctie(&self, productNaam: String){
             println!("{}", productNaam);
             println!("{productNaam}");
+            //vec<MyPoint>
+            //ed:ExtraDing::new();
+            // let a:MyPoint = MyPoint(29,25);
+            // println!("{}", a.0);
+            // println!("{}", a.1);
+            
+
         }
     )
 }
+// use qmetaobject::QMetaType;
+#[derive(SimpleListItem, Clone)]
+struct MyPoint {
+    pub x: u32,
+    pub y: u32,
+  } 
+
+// impl QMetaType for MyPoint {
+//     // fn b()->u32{
+//         //     26
+//         // }
+//     }
+//#[derive(SimpleListModel)] 
+//struct OnzeLijst{
+//} 
+//    Ratchanan says:" The public member needs to implement the QMetaType trait" 
+//    Ratchanan says:But "impl QMetaType for i32" exists...
+//pub struct SimpleListModel<MyPoint: SimpleListItem + 'static> { /* private fields */ }
+// trait OnzeLijst{
+// }
+// #[derive(SimpleListModel, MyPoint)]
+// impl SimpleListModel for OnzeLijst{
+
+// }
+
+#[derive(Default, Clone)]
+struct ExtraDing{
+    nummer: u32,
+}
+impl QMetaType for ExtraDing{
+    // fn new(nummer:u32)->Self{
+    //     Self{ nummer }
+    // }
+}
+
 #[derive(QObject, Default)]
 struct Boodschap{
     base: qt_base_class!(trait QObject),
