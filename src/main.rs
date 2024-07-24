@@ -53,7 +53,7 @@ struct BoodschappenLijst {
             println!("{productNaam}");
             //vec<MyPoint>
             //ed:ExtraDing::new();
-            // let a:MyPoint = MyPoint(29,25);
+            //let a:MyPoint = MyPoint();
             // println!("{}", a.0);
             // println!("{}", a.1);
             
@@ -63,10 +63,12 @@ struct BoodschappenLijst {
 }
 // use qmetaobject::QMetaType;
 #[derive(SimpleListItem, Clone)]
-struct MyPoint {
-    pub x: u32,
-    pub y: u32,
-  } 
+struct MyPoint{
+    pub a:u32,
+    pub b:u32,
+}
+
+//impl QMetaType for MyPoint {};
 
 // impl QMetaType for MyPoint {
 //     // fn b()->u32{
