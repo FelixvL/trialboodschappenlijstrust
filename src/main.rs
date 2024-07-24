@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2024  esaf
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; version 3.
- *
- * rtb is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 #[macro_use]
 extern crate cstr;
 extern crate cpp;
@@ -26,8 +10,6 @@ use std::path::PathBuf;
 use gettextrs::{bindtextdomain, textdomain};
 use qmetaobject::*;
 
-//use std::collections::LinkedList;
-//use std::cell::RefCell;
 mod qrc;
 
 use qmetaobject::QMetaType;
@@ -39,9 +21,6 @@ struct BoodschappenLijst {
     name_changed: qt_signal!(),
     boodschap: Boodschap,
     nummer: u32,
-//    list: LinkedList<u32> = LinkedList::new(), 
-    //list: qt_property!(Vec<i32>; CONST),
-    //QVector<int> integerVector;
     compute_greetings: qt_method!(
         fn compute_greetings(&self, verb: String) -> QString {
             format!("{verb} {}", self.name).into()
@@ -51,11 +30,6 @@ struct BoodschappenLijst {
         fn onzeFunctie(&self, productNaam: String){
             println!("{}", productNaam);
             println!("{productNaam}");
-            //vec<MyPoint>
-            //ed:ExtraDing::new();
-            //let a:MyPoint = MyPoint();
-            // println!("{}", a.0);
-            //println!("{}", a.1);
             let point:MyPoint= MyPoint {
                 a: 1,
                 b: 1,
@@ -63,56 +37,23 @@ struct BoodschappenLijst {
             
             println!("{}", point.a);
             println!("{}", point.b);
-        //    let mijnLijst = SimpleListModel{};
-        let mut r = SimpleListModel::<MyPoint>::default();
-        r.push(point);
-        println!("{}", r[0].a);
-            
-            
-
+            let mut r = SimpleListModel::<MyPoint>::default();
+            r.push(point);
+            println!("{}", r[0].a);
         }
     )
 }
-// use qmetaobject::QMetaType;
 #[derive(SimpleListItem, Default)]
 struct MyPoint{
     pub a:u32,
     pub b:u32,
-
-    // fn new(c:u32, d:u32)->Self{
-    //     a = c;
-    //     b = d;
-    // }
 }
-
-//impl QMetaType for MyPoint {};
-
-// impl QMetaType for MyPoint {
-//     // fn b()->u32{
-//         //     26
-//         // }
-//     }
-//#[derive(SimpleListModel)] 
-//struct OnzeLijst{
-//} 
-//    Ratchanan says:" The public member needs to implement the QMetaType trait" 
-//    Ratchanan says:But "impl QMetaType for i32" exists...
-//pub struct SimpleListModel<MyPoint: SimpleListItem + 'static> { /* private fields */ }
-// trait OnzeLijst{
-// }
-// #[derive(SimpleListModel, MyPoint)]
-// impl SimpleListModel for OnzeLijst{
-
-// }
 
 #[derive(Default, Clone)]
 struct ExtraDing{
     nummer: u32,
 }
 impl QMetaType for ExtraDing{
-    // fn new(nummer:u32)->Self{
-    //     Self{ nummer }
-    // }
 }
 
 #[derive(QObject, Default)]
