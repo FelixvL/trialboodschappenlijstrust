@@ -40,6 +40,11 @@ struct BoodschappenLijst {
             let mut r = SimpleListModel::<MyPoint>::default();
             r.push(point);
             println!("{}", r[0].a);
+            //let r = SimpleListModel::<MyPoint>(); 
+            //let mut r2 = SimpleListModel::<MyPoint>(); 
+            let mut r3: SimpleListModel::<MyPoint>; 
+
+
         }
     )
 }
