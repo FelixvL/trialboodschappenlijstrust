@@ -63,6 +63,8 @@ struct BoodschappenLijst {
             
             println!("{}", point.a);
             println!("{}", point.b);
+        //    let mijnLijst = SimpleListModel{};
+        let r = SimpleListModel::<MyPoint>::default();
             
             
 
@@ -70,7 +72,7 @@ struct BoodschappenLijst {
     )
 }
 // use qmetaobject::QMetaType;
-#[derive(SimpleListItem, Clone)]
+#[derive(SimpleListItem, Default)]
 struct MyPoint{
     pub a:u32,
     pub b:u32,
