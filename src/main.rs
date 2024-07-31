@@ -12,15 +12,11 @@ use qmetaobject::*;
 
 mod qrc;
 
-use qmetaobject::QMetaType;
-
 #[derive(QObject, Default)]
 struct BoodschappenLijst {
     base: qt_base_class!(trait QObject),
     name: qt_property!(QString; NOTIFY name_changed),
     name_changed: qt_signal!(),
-    boodschap: Boodschap,
-    nummer: u32,
     alleboodschappen:SimpleListModel::<Boodschap>,
 
     compute_greetings: qt_method!(
@@ -28,48 +24,29 @@ struct BoodschappenLijst {
             format!("{verb} {}", self.name).into()
         }
     ),
-    trialInit: qt_method!(
-        fn trialInit(&mut self){
+    trial_init: qt_method!(
+        fn trial_init(&mut self){
             self.alleboodschappen = SimpleListModel::<Boodschap>::default();
         }
     ),
-    onzeFunctie: qt_method!(
-        fn onzeFunctie(&mut self, productNaamx: String){
-            println!("{}", productNaamx);
+    onze_functie: qt_method!(
+        fn onze_functie(&mut self, product_naam_p: String){
             let point:Boodschap= Boodschap {
-                productNaam: productNaamx,
+                product_naam: product_naam_p,
                 prijs: 1,
             } ;
             self.alleboodschappen.push(point);
-            println!("---{}", self.alleboodschappen[0].productNaam);
-            println!("{}", self.alleboodschappen.row_count());
-            println!("-----------------");
             for a in self.alleboodschappen.iter(){
-                println!("{}", a.productNaam);
+                println!("{}", a.product_naam);
             }
         }
     )
 }
-#[derive(SimpleListItem, Default)]
-struct MyPoint{
-    pub a:u32,
-    pub b:u32,
-}
-
-#[derive(Default, Clone)]
-struct ExtraDing{
-    nummer: u32,
-}
-impl QMetaType for ExtraDing{
-}
 
 #[derive(SimpleListItem, Default)]
 struct Boodschap{
-    pub productNaam: String,
+    pub product_naam: String,
     pub prijs: u32,
-}
-impl Boodschap{
-
 }
 
 fn main() {

@@ -34,7 +34,7 @@ ApplicationWindow {
         id: greeter
         name: "Rust + Ubuntu Touch"
         Component.onCompleted:{
-            trialInit();
+            trial_init();
         }
     }
 
@@ -62,7 +62,7 @@ ApplicationWindow {
             Button{
                 text: i18n.tr('Voeg Boodschap Toe')
                 onClicked:{
-                    greeter.onzeFunctie(onsTekstVeld.text);
+                    greeter.onze_functie(onsTekstVeld.text);
                 }
 
             }
