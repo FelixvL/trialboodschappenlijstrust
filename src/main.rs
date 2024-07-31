@@ -21,9 +21,7 @@ struct BoodschappenLijst {
     name_changed: qt_signal!(),
     boodschap: Boodschap,
     nummer: u32,
-
-    alleboodschappen:SimpleListModel::<MyPoint>,
-//    alleboodschappen:SimpleListModel<MyPoint>, // both work
+    alleboodschappen:SimpleListModel::<Boodschap>,
 
     compute_greetings: qt_method!(
         fn compute_greetings(&self, verb: String) -> QString {
@@ -32,35 +30,23 @@ struct BoodschappenLijst {
     ),
     trialInit: qt_method!(
         fn trialInit(&mut self){
-            println!("HET WERKT IN INIT");
-            self.alleboodschappen = SimpleListModel::<MyPoint>::default();
+            self.alleboodschappen = SimpleListModel::<Boodschap>::default();
         }
     ),
     onzeFunctie: qt_method!(
-        fn onzeFunctie(&mut self, productNaam: String){
-            println!("{}", productNaam);
-            println!("{productNaam}");
-            let point:MyPoint= MyPoint {
-                a: 1,
-                b: 1,
+        fn onzeFunctie(&mut self, productNaamx: String){
+            println!("{}", productNaamx);
+            let point:Boodschap= Boodschap {
+                productNaam: productNaamx,
+                prijs: 1,
             } ;
-            let point2:MyPoint= MyPoint {
-                a: 4,
-                b: 5,
-            } ;           
-            println!("{}", point.a);
-            println!("{}", point.b);
-//            let mut r = SimpleListModel::<MyPoint>::default();
-//            self.alleboodschappen = SimpleListModel::<MyPoint>::default();
             self.alleboodschappen.push(point);
-            //r.push(point2);
-            println!("{}", self.alleboodschappen[0].a);
+            println!("---{}", self.alleboodschappen[0].productNaam);
             println!("{}", self.alleboodschappen.row_count());
-            //let r = SimpleListModel::<MyPoint>(); 
-            //let mut r2 = SimpleListModel::<MyPoint>(); 
-            let mut r3: SimpleListModel::<MyPoint>; 
-
-
+            println!("-----------------");
+            for a in self.alleboodschappen.iter(){
+                println!("{}", a.productNaam);
+            }
         }
     )
 }
@@ -77,11 +63,10 @@ struct ExtraDing{
 impl QMetaType for ExtraDing{
 }
 
-#[derive(QObject, Default)]
+#[derive(SimpleListItem, Default)]
 struct Boodschap{
-    base: qt_base_class!(trait QObject),
-    productNaam: String,
-    prijs: u32,
+    pub productNaam: String,
+    pub prijs: u32,
 }
 impl Boodschap{
 
