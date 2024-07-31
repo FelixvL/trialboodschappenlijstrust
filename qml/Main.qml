@@ -33,6 +33,9 @@ ApplicationWindow {
     BoodschappenLijst {
         id: greeter
         name: "Rust + Ubuntu Touch"
+        Component.onCompleted:{
+            trialInit();
+        }
     }
 
     Page {

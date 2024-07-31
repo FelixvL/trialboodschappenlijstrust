@@ -30,6 +30,12 @@ struct BoodschappenLijst {
             format!("{verb} {}", self.name).into()
         }
     ),
+    trialInit: qt_method!(
+        fn trialInit(&mut self){
+            println!("HET WERKT IN INIT");
+            self.alleboodschappen = SimpleListModel::<MyPoint>::default();
+        }
+    ),
     onzeFunctie: qt_method!(
         fn onzeFunctie(&mut self, productNaam: String){
             println!("{}", productNaam);
@@ -45,7 +51,7 @@ struct BoodschappenLijst {
             println!("{}", point.a);
             println!("{}", point.b);
 //            let mut r = SimpleListModel::<MyPoint>::default();
-            self.alleboodschappen = SimpleListModel::<MyPoint>::default();
+//            self.alleboodschappen = SimpleListModel::<MyPoint>::default();
             self.alleboodschappen.push(point);
             //r.push(point2);
             println!("{}", self.alleboodschappen[0].a);

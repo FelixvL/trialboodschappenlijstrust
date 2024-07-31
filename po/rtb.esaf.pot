@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-31 19:07+0000\n"
+"POT-Creation-Date: 2024-07-31 19:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,18 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: qml/Main.qml:43
+#: qml/Main.qml:46
 msgid "TrialRustBoodschappenLijst"
 msgstr ""
 
-#: qml/Main.qml:60
+#: qml/Main.qml:63
 msgid "Voeg Boodschap Toe"
 msgstr ""
 
-#: qml/Main.qml:72
+#: qml/Main.qml:75
 msgid "Press the button below!"
 msgstr ""
 
-#: qml/Main.qml:76
+#: qml/Main.qml:79
 msgid "Compute greeting"
 msgstr ""
