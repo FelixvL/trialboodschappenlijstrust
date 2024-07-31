@@ -21,25 +21,35 @@ struct BoodschappenLijst {
     name_changed: qt_signal!(),
     boodschap: Boodschap,
     nummer: u32,
+
+    alleboodschappen:SimpleListModel::<MyPoint>,
+//    alleboodschappen:SimpleListModel<MyPoint>, // both work
+
     compute_greetings: qt_method!(
         fn compute_greetings(&self, verb: String) -> QString {
             format!("{verb} {}", self.name).into()
         }
     ),
     onzeFunctie: qt_method!(
-        fn onzeFunctie(&self, productNaam: String){
+        fn onzeFunctie(&mut self, productNaam: String){
             println!("{}", productNaam);
             println!("{productNaam}");
             let point:MyPoint= MyPoint {
                 a: 1,
                 b: 1,
             } ;
-            
+            let point2:MyPoint= MyPoint {
+                a: 4,
+                b: 5,
+            } ;           
             println!("{}", point.a);
             println!("{}", point.b);
-            let mut r = SimpleListModel::<MyPoint>::default();
-            r.push(point);
-            println!("{}", r[0].a);
+//            let mut r = SimpleListModel::<MyPoint>::default();
+            self.alleboodschappen = SimpleListModel::<MyPoint>::default();
+            self.alleboodschappen.push(point);
+            //r.push(point2);
+            println!("{}", self.alleboodschappen[0].a);
+            println!("{}", self.alleboodschappen.row_count());
             //let r = SimpleListModel::<MyPoint>(); 
             //let mut r2 = SimpleListModel::<MyPoint>(); 
             let mut r3: SimpleListModel::<MyPoint>; 
